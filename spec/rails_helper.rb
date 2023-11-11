@@ -67,7 +67,8 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
-  config.filter_sensitive_data('<TMDB_API_KEY>') { Rails.application.credentials.tmdb[:key] }
+  config.filter_sensitive_data('<EDAMAM_APP_ID>') { Rails.application.credentials.edamam[:app_id] }
+  config.filter_sensitive_data('<EDAMAM_APP_KEY>') { Rails.application.credentials.edamam[:app_key] }
   config.configure_rspec_metadata!
 end
 
