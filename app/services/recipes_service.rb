@@ -1,5 +1,4 @@
 class RecipesService < ApplicationService
-
   def conn
     Faraday.new(url: 'https://api.edamam.com') do |faraday|
       faraday.params["app_id"] = Rails.application.credentials.edamam[:app_id]
