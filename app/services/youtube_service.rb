@@ -1,6 +1,6 @@
-class YouTubeService < ApplicationService
+class YoutubeService < ApplicationService
   def conn
-    Faraday.new(url: 'https://youtube.googleapis.com/youtube/v3') do |faraday|
+    Faraday.new(url: 'https://youtube.googleapis.com') do |faraday|
       faraday.params["key"] = Rails.application.credentials.youtube[:key]
       faraday.params["type"] = 'video'
       faraday.params["part"] = 'snippet'
@@ -11,7 +11,7 @@ class YouTubeService < ApplicationService
 
   def country_video(country)
     json_parse(
-      conn.get("/search") do |req|
+      conn.get("/youtube/v3/search") do |req|
         req.params['q'] = country
       end
     )

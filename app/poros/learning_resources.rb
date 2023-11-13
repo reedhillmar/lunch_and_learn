@@ -7,12 +7,23 @@ class LearningResources
     @images = make_images(country)
   end
 
-
   def country_video(country)
-    YouTubeService.new.country_video(country)[:items]
+    YoutubeService.new.country_video(country)[:items].first
   end
 
   def country_images(country)
     PexelsService.new.country_images(country)[:photos]
+  end
+
+  def make_video(country)
+    video = country_video(country)
+    Video.new(video)
+  end
+
+  def make_images(country)
+    images = country_images(country)
+    images.map do |image|
+      Image.new(image)
+    end
   end
 end
