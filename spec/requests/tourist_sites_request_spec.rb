@@ -25,12 +25,12 @@ describe 'Tourist Sites API' do
     first_site_attributes = first_site[:attributes]
 
     expect(first_site_attributes).to have_key :name
-    expect(first_site_attributes[:name]).to eq("Tour de l'horloge")
+    expect(first_site_attributes[:name]).to eq("Palais du Louvre")
 
     expect(first_site_attributes).to have_key :address
-    expect(first_site_attributes[:address]).to eq("Tour de l'horloge, Allée de l'Horloge, 23200 Aubusson, France")
+    expect(first_site_attributes[:address]).to eq("Louvre Palace, Place du Lieutenant Henri Karcher, 75001 Paris, France")
 
     expect(first_site_attributes).to have_key :place_id
-    expect(first_site_attributes[:place_id]).to eq("something here?")
+    expect(first_site_attributes[:place_id]).to eq("513025c70ed2af024059358e28f2356e4840f00101f90159c731000000000092031050616c616973206475204c6f75767265")
   end
 end
