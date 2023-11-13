@@ -6,7 +6,7 @@ class Api::V1::TouristSitesController < ApplicationController
   private
 
   def country_tourist_sites(country)
-    latlon = CountryService.new(find_country_capital_coordinates(country))
+    latlon = CountryService.new.find_country_capital_coordinates(country)
     lat = latlng.first
     lon = latlng.last
 
