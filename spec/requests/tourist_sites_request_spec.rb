@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Tourist Sites API' do
-  it 'sends a list of tourist sites near the capital city of a given country' do
+  it 'sends a list of tourist sites near the capital city of a given country', :vcr do
     get '/api/v1/tourist_sites?country=france'
 
     response_body = JSON.parse(response.body, symbolize_names: true)

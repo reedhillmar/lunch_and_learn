@@ -12,6 +12,6 @@ class CountryService < ApplicationService
   end
 
   def find_country_capital_coordinates(country)
-    json_parse(get_url("/v3.1/name/#{country}"))[:capitalInfo][:latlng]
+    json_parse(get_url("/v3.1/name/#{country}")).first[:capitalInfo][:latlng]
   end
 end
