@@ -5,7 +5,7 @@ describe 'Tourist Sites API' do
     get '/api/v1/tourist_sites?country=france'
 
     response_body = JSON.parse(response.body, symbolize_names: true)
-require 'pry';binding.pry
+
     expect(response).to be_successful
 
     expect(response_body).to have_key :data

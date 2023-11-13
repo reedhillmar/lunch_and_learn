@@ -1,4 +1,4 @@
-class PlacesServices < ApplicationService
+class PlacesService < ApplicationService
   def conn
     Faraday.new(url: 'https://api.geoapify.com') do |faraday|
       faraday.params['apiKey'] = Rails.application.credentials.geoapify[:apiKey]
