@@ -45,4 +45,13 @@ describe 'Learning Resources API' do
     expect(first_image).to have_key :url
     expect(first_image[:url]).to eq('https://www.pexels.com/photo/stone-castle-wall-surrounded-with-green-grass-924631/')
   end
+
+  it 'returns a specific response for an input with no videos or images', :vcr do
+    get '/api/v1/learning_resources?country=Nameofcountry'
+
+    response_body = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(response_body).to eq({:data=>{:id=>nil, :type=>"learning_resource", :attributes=>{:country=>"Nameofcountry", :video=>{}, :images=>[]}}})
+  end
 end

@@ -17,7 +17,11 @@ class LearningResources
 
   def make_video(country)
     video = country_video(country)
-    Video.new(video)
+    if video
+      Video.new(video)
+    else
+      {}
+    end
   end
 
   def make_images(country)
