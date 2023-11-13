@@ -4,7 +4,7 @@ class Api::V1::RecipesController < ApplicationController
       params[:country] = CountryService.new.random_country
       render json: RecipeSerializer.new(make_recipes(country_recipes(params[:country]), params[:country]))
     elsif params[:country]
-      render json: RecipeSerializer.new(make_recipe(country_recipes(params[:country]), params[:country]))
+      render json: RecipeSerializer.new(make_recipes(country_recipes(params[:country]), params[:country]))
     end
   end
 

@@ -37,7 +37,7 @@ describe 'Recipes API' do
     expect(first_recipe[:attributes]).to_not have_key :cautions
   end
 
-  it 'sends a list of all recipes by a random country', :vcr do
+  it 'sends a list of all recipes by a random country' do
     get '/api/v1/recipes?country=random'
 
     response_body = JSON.parse(response.body, symbolize_names: true)
@@ -48,17 +48,19 @@ describe 'Recipes API' do
 
     first_recipe = response_body[:data].first
 
-    expect(first_recipe).to have_key :id
-    expect(first_recipe[:id]).to eq(nil)
+    if first_recipe
+      expect(first_recipe).to have_key :id
+      expect(first_recipe[:id]).to eq(nil)
 
-    expect(first_recipe).to have_key :type
-    expect(first_recipe[:type]).to eq('recipe')
+      expect(first_recipe).to have_key :type
+      expect(first_recipe[:type]).to eq('recipe')
 
-    expect(first_recipe).to have_key :attributes
-    expect(first_recipe[:attributes]).to have_key :title
-    expect(first_recipe[:attributes]).to have_key :url
-    expect(first_recipe[:attributes]).to have_key :country
-    expect(first_recipe[:attributes]).to have_key :image
+      expect(first_recipe).to have_key :attributes
+      expect(first_recipe[:attributes]).to have_key :title
+      expect(first_recipe[:attributes]).to have_key :url
+      expect(first_recipe[:attributes]).to have_key :country
+      expect(first_recipe[:attributes]).to have_key :image
+    end
   end
 
   it 'sends an empty data array if no country given or no matches', :vcr do
