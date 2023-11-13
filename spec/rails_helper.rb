@@ -69,6 +69,10 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.filter_sensitive_data('<EDAMAM_APP_ID>') { Rails.application.credentials.edamam[:app_id] }
   config.filter_sensitive_data('<EDAMAM_APP_KEY>') { Rails.application.credentials.edamam[:app_key] }
+  config.filter_sensitive_data('<GEOAPIFY_API_KEY>') { Rails.application.credentials.geoapify[:apiKey] }
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { Rails.application.credentials.youtube[:key] }
+  config.filter_sensitive_data('<PEXELS_AUTH_KEY>') { Rails.application.credentials.pexels[:authorization] }
+  config.allow_http_connections_when_no_cassette = true
   config.configure_rspec_metadata!
 end
 
