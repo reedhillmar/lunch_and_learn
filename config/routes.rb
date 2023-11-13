@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       # RESTful Routes
       resources :recipes, only: [:index]
+      resources :tourist_sites, only: [:index]
     end
   end
 end
