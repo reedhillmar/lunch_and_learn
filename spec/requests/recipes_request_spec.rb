@@ -38,7 +38,7 @@ describe 'Recipes API' do
   end
 
   it 'sends a list of all recipes by a random country' do
-    get '/api/v1/recipes?country=random'
+    get '/api/v1/recipes?country='
 
     response_body = JSON.parse(response.body, symbolize_names: true)
 
@@ -64,7 +64,7 @@ describe 'Recipes API' do
   end
 
   it 'sends an empty data array if no country given or no matches', :vcr do
-    get '/api/v1/recipes?country='
+    get '/api/v1/recipes?country= '
 
     response_body = JSON.parse(response.body, symbolize_names: true)
 

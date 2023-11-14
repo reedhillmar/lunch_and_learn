@@ -1,9 +1,9 @@
 class Api::V1::RecipesController < ApplicationController
   def index
-    if params[:country] == 'random'
-      params[:country] = CountryService.new.random_country
+    if params[:country]
       render json: RecipeSerializer.new(make_recipes(country_recipes(params[:country]), params[:country]))
-    elsif params[:country]
+    else
+      params[:country] = CountryService.new.random_country
       render json: RecipeSerializer.new(make_recipes(country_recipes(params[:country]), params[:country]))
     end
   end
