@@ -1,6 +1,6 @@
 class Api::V1::RecipesController < ApplicationController
   def index
-    if params[:country]
+    if params[:country].length > 0
       # option to refactor here to un-nest method calls here
       render json: RecipeSerializer.new(make_recipes(country_recipes(params[:country]), params[:country]))
     else
