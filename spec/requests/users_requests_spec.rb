@@ -16,6 +16,7 @@ describe 'Users API' do
         response_body = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to be_successful
+        expect(response.status).to eq(201)
 
         expect(response_body).to have_key :data
         expect(response_body).to be_a Hash
@@ -57,9 +58,10 @@ describe 'Users API' do
 
         post '/api/v1/users', params: user_params, as: :json
 
-        expect(response.status).to eq(400)
+        response_body = JSON.parse(response.body, symbolize_names: true)
 
-        expect(response.body).to eq("{\"errors\":[\"Email has already been taken\"]}")
+        expect(response.status).to eq(400)
+        expect(response_body).to eq({ errors: ["Email has already been taken"] })
       end
 
       it 'returns an error if the password and password confirmation do not match', :vcr do
@@ -72,9 +74,10 @@ describe 'Users API' do
 
         post '/api/v1/users', params: user_params, as: :json
 
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
         expect(response.status).to eq(400)
-        
-        expect(response.body).to eq("{\"errors\":[\"Password confirmation doesn't match Password\"]}")
+        expect(response_body).to eq({ errors: ["Password confirmation doesn't match Password"] })
       end
     end
   end

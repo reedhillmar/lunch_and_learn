@@ -70,8 +70,10 @@ describe 'Sessions API' do
 
         post '/api/v1/sessions', params: session_params, as: :json
 
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
         expect(response.status).to eq(401)
-        expect(response.body).to eq("{\"errors\":\"Invalid credentials\"}")
+        expect(response_body).to eq({ errors: 'Invalid credentials' })
       end
 
       it 'returns an error if password is invalid' do
@@ -91,8 +93,10 @@ describe 'Sessions API' do
 
         post '/api/v1/sessions', params: session_params, as: :json
 
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
         expect(response.status).to eq(401)
-        expect(response.body).to eq("{\"errors\":\"Invalid credentials\"}")
+        expect(response_body).to eq({ errors: 'Invalid credentials' })
       end
 
       it 'returns an error if no email provided' do
@@ -111,8 +115,10 @@ describe 'Sessions API' do
 
         post '/api/v1/sessions', params: session_params, as: :json
 
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
         expect(response.status).to eq(401)
-        expect(response.body).to eq("{\"errors\":\"Invalid credentials\"}")
+        expect(response_body).to eq({ errors: 'Invalid credentials' })
       end
 
       it 'returns an error if no password provided' do
@@ -131,8 +137,10 @@ describe 'Sessions API' do
 
         post '/api/v1/sessions', params: session_params, as: :json
 
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
         expect(response.status).to eq(401)
-        expect(response.body).to eq("{\"errors\":\"Invalid credentials\"}")
+        expect(response_body).to eq({ errors: 'Invalid credentials' })
       end
     end
   end

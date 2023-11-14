@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   before_validation :generate_api_key, on: :create
 
