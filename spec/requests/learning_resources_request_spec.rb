@@ -33,6 +33,8 @@ describe 'Learning Resources API' do
     expect(learning_resources_attributes[:video][:title]).to eq('A Super Quick History of Laos')
     expect(learning_resources_attributes[:video]).to have_key :youtube_video_id
     expect(learning_resources_attributes[:video][:youtube_video_id]).to eq('uw8hjVqxMXw')
+    expect(learning_resources_attributes[:video]).to_not have_key :channelId
+    expect(learning_resources_attributes[:video]).to_not have_key :channelTitle
 
     expect(learning_resources_attributes).to have_key :images
     expect(learning_resources_attributes[:images]).to be_an Array
@@ -44,6 +46,9 @@ describe 'Learning Resources API' do
     
     expect(first_image).to have_key :url
     expect(first_image[:url]).to eq('https://www.pexels.com/photo/stone-castle-wall-surrounded-with-green-grass-924631/')
+
+    expect(first_image).to_not have_key :photographer
+    expect(first_image).to_not have_key :photographer_url
   end
 
   it 'returns a specific response for an input with no videos or images', :vcr do

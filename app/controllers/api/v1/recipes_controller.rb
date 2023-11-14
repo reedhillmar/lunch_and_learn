@@ -1,6 +1,7 @@
 class Api::V1::RecipesController < ApplicationController
   def index
-    if params[:country]
+    if params[:country].length > 0
+      # option to refactor here to un-nest method calls here
       render json: RecipeSerializer.new(make_recipes(country_recipes(params[:country]), params[:country]))
     else
       params[:country] = CountryService.new.random_country
@@ -14,6 +15,7 @@ class Api::V1::RecipesController < ApplicationController
     RecipesService.new.country_recipes(country)[:hits]
   end
 
+  # option to refactor for one input here???
   def make_recipes(recipes, country)
     recipes.map do |recipe|
       Recipe.new(recipe, country)
