@@ -15,6 +15,7 @@ class LearningResources
     PexelsService.new.country_images(country)[:photos]
   end
 
+  # option to refactor the if statement here
   def make_video(country)
     video = country_video(country)
     if video

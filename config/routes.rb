@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # Non-RESTful Routes
-
+      ## Look Mom, no Non-RESTful Routes!
 
       # RESTful Routes
       resources :recipes, only: [:index]
