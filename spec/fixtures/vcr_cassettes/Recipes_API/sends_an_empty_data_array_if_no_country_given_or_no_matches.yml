@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/api/recipes/v2?app_id=<EDAMAM_APP_ID>&app_key=<EDAMAM_APP_KEY>&q=&type=public
+    uri: https://api.edamam.com/api/recipes/v2?app_id=<EDAMAM_APP_ID>&app_key=<EDAMAM_APP_KEY>&q=%20&type=public
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Sun, 12 Nov 2023 20:51:49 GMT
+      - Tue, 14 Nov 2023 01:02:36 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -33,17 +33,17 @@ http_interactions:
       Expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       X-Served-By:
-      - ip-10-0-1-51.ec2.internal/10.0.1.51
+      - ip-10-0-1-228.ec2.internal/10.0.1.228
       Content-Language:
       - en
       Strict-Transport-Security:
       - max-age=15552001
       X-Request-Id:
-      - 9c4cec3c56f9c1da52c1a65e06b43a58
+      - b8d5dcffd445394b15b9524ba6fa8f51
     body:
       encoding: UTF-8
       string: '{"from":1,"to":0,"count":0,"_links":{},"hits":[]}'
-  recorded_at: Sun, 12 Nov 2023 20:51:49 GMT
+  recorded_at: Tue, 14 Nov 2023 01:02:36 GMT
 - request:
     method: get
     uri: https://api.edamam.com/api/recipes/v2?app_id=<EDAMAM_APP_ID>&app_key=<EDAMAM_APP_KEY>&q=asdfjaioefjiowe&type=public
@@ -65,7 +65,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Sun, 12 Nov 2023 20:51:49 GMT
+      - Tue, 14 Nov 2023 01:02:36 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -77,15 +77,15 @@ http_interactions:
       Expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       X-Served-By:
-      - ip-10-0-1-228.ec2.internal/10.0.1.228
+      - ip-10-0-1-51.ec2.internal/10.0.1.51
       Content-Language:
       - en
       Strict-Transport-Security:
       - max-age=15552001
       X-Request-Id:
-      - 8333c6a205479b92006032374ddf32de
+      - fa67bd44fb6fffbb3342b0d118869d95
     body:
       encoding: UTF-8
       string: '{"from":1,"to":0,"count":0,"_links":{},"hits":[]}'
-  recorded_at: Sun, 12 Nov 2023 20:51:49 GMT
+  recorded_at: Tue, 14 Nov 2023 01:02:36 GMT
 recorded_with: VCR 6.2.0

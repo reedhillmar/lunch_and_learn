@@ -4,14 +4,14 @@ describe 'Users API' do
   context 'when a user sends a POST request to /api/v1/users' do
     describe 'happy path' do
       it 'allows a user to create an account', :vcr do
-        user_data = {
+        user_params = {
           name: 'Odell',
           email: 'goodboy@ruffruff.com',
           password: 'treats4lyf',
           password_confirmation: 'treats4lyf'
         }
 
-        post '/api/v1/users', params: { user: user_data }, as: :json
+        post '/api/v1/users', params: user_params, as: :json
 
         response_body = JSON.parse(response.body, symbolize_names: true)
 
@@ -46,16 +46,16 @@ describe 'Users API' do
 
     describe 'sad path' do
       it 'returns an error if the email is already taken', :vcr do
-        user_data = {
+        user_params = {
           name: 'Odell',
           email: 'goodboy@ruffruff.com',
           password: 'treats4lyf',
           password_confirmation: 'treats4lyf'
         }
 
-        post '/api/v1/users', params: { user: user_data }, as: :json
+        post '/api/v1/users', params: user_params, as: :json
 
-        post '/api/v1/users', params: { user: user_data }, as: :json
+        post '/api/v1/users', params: user_params, as: :json
 
         expect(response.status).to eq(400)
 
@@ -63,14 +63,14 @@ describe 'Users API' do
       end
 
       it 'returns an error if the password and password confirmation do not match', :vcr do
-        user_data = {
+        user_params = {
           name: 'Odell',
           email: 'goodboy@ruffruff.com',
           password: 'treats4lyf',
           password_confirmation: 'notreats4u'
         }
 
-        post '/api/v1/users', params: { user: user_data }, as: :json
+        post '/api/v1/users', params: user_params, as: :json
 
         expect(response.status).to eq(400)
         
